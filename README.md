@@ -1,7 +1,6 @@
 # Project Setup and Testing Guide
 
 This guide covers the setup process for running automated tests in the project, generating reports with Allure, and configuring PyCharm for test execution.
-
 ## Prerequisites
 
 - Python 3.x
