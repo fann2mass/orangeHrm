@@ -12,3 +12,16 @@ Locate the user status option on the "Add User" form.
 Check the current status of the user. If it is not "Disabled," you need to select the "Disabled" option.
 Ensure your script can handle both conditions: if the status is already "Disabled," it remains unchanged; otherwise, change it to "Disabled."
 '''
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+driver = webdriver.Chrome()
+driver.get("https://portnov_admin-trials711.orangehrmlive.com/client/#/dashboard")
+
+driver.find_element(By.CSS_SELECTOR, "input[id='txtUsername']").send_keys("Admin")
+driver.find_element(By.CSS_SELECTOR, "input[id='txtPassword']").send_keys("qTJn5@5APu")
+driver.find_element(By.CSS_SELECTOR, "button[type='submit']").click()
+
+time.sleep(5)
