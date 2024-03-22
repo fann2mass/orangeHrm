@@ -21,6 +21,8 @@ time.sleep(5)
 
 if driver.find_element(By.XPATH, "//label[contains(text(),'Disabled')]").is_enabled():
    driver.find_element(By.XPATH, "//label[contains(text(),'Enabled')]")
+
+driver.quit()
 '''
 Homework Assignment: Applying Conditions
 Objective: Perform the same initial steps as the previous assignment to log into the application and navigate to the "Add User" page. Instead of listing input fields, you will find the user status option (which by default is set to "Enabled"). If the status is not set to "Disabled," change it to "Disabled." This task requires you to apply conditions to interact with web elements.
