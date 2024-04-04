@@ -1,7 +1,6 @@
 # Project Setup and Testing Guide
 
 This guide covers the setup process for running automated tests in the project, generating reports with Allure, and configuring PyCharm for test execution.
-
 ## Prerequisites
 
 - Python 3.x
@@ -64,4 +63,13 @@ python runner.py testHeadless
 
 ```bash
 python runner.py openReport
+```
+
+### Run Specific test by name
+
+```bash
+python runner.py --test=test/test_case_1_Login_to_the_application.py --headless
+```
+```bash
+python runner.py --test=test/test_case_1_Login_to_the_application.py
 ```
