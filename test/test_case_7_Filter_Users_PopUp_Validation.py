@@ -12,7 +12,7 @@
 import time
 
 def test_case_7_test_employee_name_autocomplete(app):
-    app.orangeHrm.openUrl("https://portnov_administrator-trials712.orangehrmlive.com")
+    app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
@@ -35,7 +35,7 @@ def test_case_7_test_employee_name_autocomplete(app):
 # Expected Result:
 # A message indicating 'no results found' should appear if no employee names match the entered value.
 def test_case_7_1_test_employee_name_no_results(app):
-    app.orangeHrm.openUrl("https://portnov_administrator-trials712.orangehrmlive.com")
+    app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
@@ -59,7 +59,7 @@ def test_case_7_1_test_employee_name_no_results(app):
 # All dropdowns in the 'Filter Users' pop-up should display their default values.
 
 def test_case_7_2_test_dropdown_default_values(app):
-    app.orangeHrm.openUrl("https://portnov_administrator-trials712.orangehrmlive.com")
+    app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
@@ -82,7 +82,7 @@ def test_case_7_2_test_dropdown_default_values(app):
 # The 'Filter Users' pop-up should close upon clicking the 'Reset' button and upon reopening, all input fields and dropdowns should be reset to their default selections.
 
 def test_case_7_3_test_reset_button(app):
-    app.orangeHrm.openUrl("https://portnov_administrator-trials712.orangehrmlive.com")
+    app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
@@ -104,7 +104,7 @@ def test_case_7_3_test_reset_button(app):
 # The 'Filter Users' pop-up should close upon clicking the 'Cancel' button and upon reopening, the previously selected values should be retained.
 
 def test_case_7_4_test_cancel_button(app):
-    app.orangeHrm.openUrl("https://portnov_administrator-trials712.orangehrmlive.com")
+    app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')

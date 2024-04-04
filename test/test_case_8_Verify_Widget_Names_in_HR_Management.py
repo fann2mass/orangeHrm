@@ -13,7 +13,7 @@
 # The 'get_widget_names' method should return an accurate list of widget names that are present within the HR Management component.
 
 def test_case_8_test_get_widget_names_hr_management(app):
-    app.orangeHrm.openUrl("https://portnov_administrator-trials712.orangehrmlive.com")
+    app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')

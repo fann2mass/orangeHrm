@@ -13,7 +13,7 @@
 # ---------------------------------------------------------------------------------------------
 
 def test_password_field_required(app):
-    app.orangeHrm.openUrl("https://portnov_administrator-trials712.orangehrmlive.com")
+    app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
@@ -37,7 +37,7 @@ def test_password_field_required(app):
 # ---------------------------------------------------------------------------------------------
 
 def test_password_min_length(app):
-    app.orangeHrm.openUrl("https://portnov_administrator-trials712.orangehrmlive.com")
+    app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
@@ -61,7 +61,7 @@ def test_password_min_length(app):
 # ---------------------------------------------------------------------------------------------
 
 def test_password_strength_very_weak(app):
-    app.orangeHrm.openUrl("https://portnov_administrator-trials712.orangehrmlive.com")
+    app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
@@ -83,7 +83,7 @@ def test_password_strength_very_weak(app):
 # ---------------------------------------------------------------------------------------------
 
 def test_password_strength_weak(app):
-    app.orangeHrm.openUrl("https://portnov_administrator-trials712.orangehrmlive.com")
+    app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
@@ -106,7 +106,7 @@ def test_password_strength_weak(app):
 # ---------------------------------------------------------------------------------------------
 
 def test_password_strength_better(app):
-    app.orangeHrm.openUrl("https://portnov_administrator-trials712.orangehrmlive.com")
+    app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
@@ -129,7 +129,7 @@ def test_password_strength_better(app):
 # ---------------------------------------------------------------------------------------------
 
 def test_password_strength_strongest(app):
-    app.orangeHrm.openUrl("https://portnov_administrator-trials712.orangehrmlive.com")
+    app.orangeHrm.openUrl()
     app.orangeHrm.login_to_the_application()
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')

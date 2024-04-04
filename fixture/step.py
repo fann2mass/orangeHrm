@@ -89,9 +89,9 @@ class StepHelper:
         WebDriverWait(self.wd, waitingTime).until(
             EC.invisibility_of_element_located((self.get_how(locator), locator)))
 
-    def wait_for_element(self, locator):
+    def wait_for_element(self, locator, wait_time=10):
         # Waits for a specified element to be visible.
-        element = WebDriverWait(self.wd, 10).until(
+        element = WebDriverWait(self.wd, wait_time).until(
             EC.visibility_of_element_located((self.get_how(locator), locator)))
         return element
 
