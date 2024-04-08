@@ -20,7 +20,7 @@ def test_password_field_required(app):
     app.orangeHrm.hrAdministration.click_add_user()
     app.orangeHrm.popUp.set_password('')
     app.orangeHrm.popUp.click_on_save()
-    app.assert_that(app.orangeHrm.hrAdministration.get_password_error_message()).contains('Required')
+    app.assert_that(app.orangeHrm.popUp.get_password_required_message()).is_equal_to('Required')
 
 
 # ---------------------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ def test_password_min_length(app):
     app.orangeHrm.hrAdministration.click_add_user()
     app.orangeHrm.popUp.set_password('0')
     app.orangeHrm.popUp.click_on_save()
-    app.assert_that(app.orangeHrm.hrAdministration.get_password_error_8_char()).contains(
+    app.assert_that(app.orangeHrm.popUp.get_password_required_message()).is_equal_to(
         'Your password should have at least 8 characters.')
 
 
@@ -67,7 +67,8 @@ def test_password_strength_very_weak(app):
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_add_user()
     app.orangeHrm.popUp.set_password('00000000')
-    app.assert_that(app.orangeHrm.hrAdministration.get_password_very_weak()).contains('Very Weak')
+    app.orangeHrm.popUp.click_on_save()
+    app.assert_that(app.orangeHrm.popUp.get_strength_indicator_text()).is_equal_to('Very Weak')
 
 
 # ---------------------------------------------------------------------------------------------
@@ -89,7 +90,8 @@ def test_password_strength_weak(app):
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_add_user()
     app.orangeHrm.popUp.set_password('00000000..')
-    app.assert_that(app.orangeHrm.hrAdministration.get_password_weak()).is_equal_to('Weak')
+    app.orangeHrm.popUp.click_on_save()
+    app.assert_that(app.orangeHrm.popUp.get_strength_indicator_text()).is_equal_to('Weak')
 
 
 # ---------------------------------------------------------------------------------------------
@@ -112,7 +114,8 @@ def test_password_strength_better(app):
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_add_user()
     app.orangeHrm.popUp.set_password('00000000A..')
-    app.assert_that(app.orangeHrm.hrAdministration.get_password_better()).is_equal_to('Better')
+    app.orangeHrm.popUp.click_on_save()
+    app.assert_that(app.orangeHrm.popUp.get_strength_indicator_text()).is_equal_to('Better')
 
 
 # ---------------------------------------------------------------------------------------------
@@ -122,7 +125,7 @@ def test_password_strength_better(app):
 # a mix of uppercase letters, lowercase letters, numbers, and special symbols.
 # Steps:
 # 1. Follow steps 1-4 from Test Case 6.
-# 2. Enter 'Nydhig-rorpak-9fojsy' in the 'Password' field.
+# 2. Enter 'w?<3s#S7}1`<' in the 'Password' field.
 # 3. Observe the password strength indicator.
 # Expected Result:
 # The password strength indicator should display a 'Strongest' message.
@@ -134,5 +137,6 @@ def test_password_strength_strongest(app):
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_add_user()
-    app.orangeHrm.popUp.set_password('Nydhig-rorpak-9fojsy')
-    app.assert_that(app.orangeHrm.hrAdministration.get_password_strongest()).is_equal_to('Strongest')
+    app.orangeHrm.popUp.set_password('w?<3s#S7}1`<')
+    app.orangeHrm.popUp.click_on_save()
+    app.assert_that(app.orangeHrm.popUp.get_strength_indicator_text()).is_equal_to('Strongest')

@@ -3,17 +3,19 @@ from selenium.webdriver.remote.webdriver import WebDriver
 
 
 class PopUp:
-    user_name_field = '#user_name'
-    employee_name_field = "//input[@id='employee_name_filter_value']"
-    password_field = '#password'
-    confirm_password_field = '#confirmpassword'
-    save_button = '#modal-save-button'
+    user_name_field = "//input[@id='user_name']"
+    employee_name_field = "//input[@id='selectedEmployee_value']"
+    password_field = "//input[@id='password']"
+    confirm_password_field = "//input[@id='confirmpassword']"
+    save_button = "//button[contains(text(),'Save')]"
     user_exists_error_massage = "//span[text()='Already exists']"
     username_filter_field = '//input[@id="systemuser_uname_filter"]'
     filter_popup_table = '//div[@class="modal modal-fixed-footer open"]//h4[text()="Filter Users"]'
     search_button = "//a[text()='Search']"
     employee_name_auto_drop = "//div[@id='employee_name_filter_dropdown']"
     no_results_found = "//div[contains(text(),'No results found')]"
+    strength_indicator = '.password-strength-check'
+    password_required_message = 'div.col-12 .invalid-feedback'
 
     def __init__(self, step: StepHelper, wd: WebDriver):
         self.step = step
@@ -26,9 +28,11 @@ class PopUp:
         self.step.input_text(self.user_name_field, text)
 
     def set_employee_name(self, text):
+        self.step.click_on_element(self.employee_name_field)
         self.step.input_text(self.employee_name_field, text)
 
     def set_password(self, text):
+        self.step.click_on_element(self.password_field)
         self.step.input_text(self.password_field, text)
 
     def set_confirm_password(self, text):
@@ -61,4 +65,12 @@ class PopUp:
     def get_no_result_found_text(self):
         self.step.specified_element_is_present(self.no_results_found,10)
         return self.step.get_element_text(self.no_results_found)
+
+    def get_strength_indicator_text(self):
+        self.step.specified_element_is_present(self.strength_indicator,5)
+        return self.step.get_element_text(self.strength_indicator)
+
+    def get_password_required_message(self):
+        return self.step.get_element_text(self.password_required_message)
+
 

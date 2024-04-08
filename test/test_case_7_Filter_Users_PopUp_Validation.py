@@ -18,7 +18,6 @@ def test_case_7_test_employee_name_autocomplete(app):
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
     app.orangeHrm.popUp.set_employee_name("Jason")
-    time.sleep(5)
     app.assert_that(app.orangeHrm.popUp.get_employee_name_auto_drop()).contains("Jason")
 
 # -----------------------------------------------------------------------------------
