@@ -18,7 +18,9 @@ def test_case_7_test_employee_name_autocomplete(app):
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
     app.orangeHrm.popUp.set_employee_name("Jason")
+    time.sleep(5)
     app.assert_that(app.orangeHrm.popUp.get_employee_name_auto_drop()).contains("Jason")
+
 
 # -----------------------------------------------------------------------------------
 
@@ -42,6 +44,7 @@ def test_case_7_1_test_employee_name_no_results(app):
     app.orangeHrm.popUp.set_employee_name("Sasha")
     app.assert_that(app.orangeHrm.popUp.get_no_result_found_text()).is_equal_to('No results found')
 
+
 # -----------------------------------------------------------------------------------
 
 # Test Case 7_2: Verify Dropdown Default Values
@@ -63,6 +66,7 @@ def test_case_7_2_test_dropdown_default_values(app):
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
+
 
 # -----------------------------------------------------------------------------------
 
@@ -86,6 +90,7 @@ def test_case_7_3_test_reset_button(app):
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
+
 
 # -----------------------------------------------------------------------------------
 # Test Case 7_4: Verify Cancel Button Functionality
