@@ -9,7 +9,6 @@
 # 5. Start typing a known employee name in the 'Employee Name' field.
 # Expected Result:
 # As the user types, an autocomplete dropdown should appear with employee name suggestions.
-import time
 
 def test_case_7_test_employee_name_autocomplete(app):
     app.orangeHrm.openUrl()
@@ -17,9 +16,8 @@ def test_case_7_test_employee_name_autocomplete(app):
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
-    app.orangeHrm.popUp.set_employee_name("Jason")
-    time.sleep(5)
-    app.assert_that(app.orangeHrm.popUp.get_employee_name_auto_drop()).contains("Jason")
+    app.orangeHrm.popUp.set_filter_employee_name_field("Jason")
+    app.assert_that(app.orangeHrm.popUp.get_employee_name_auto_drop()).contains('Jason Marshal', 'Jason Morgan')
 
 
 # -----------------------------------------------------------------------------------
@@ -41,7 +39,7 @@ def test_case_7_1_test_employee_name_no_results(app):
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
-    app.orangeHrm.popUp.set_employee_name("Sasha")
+    app.orangeHrm.popUp.set_filter_employee_name_field("Sasha")
     app.assert_that(app.orangeHrm.popUp.get_no_result_found_text()).is_equal_to('No results found')
 
 
@@ -66,6 +64,32 @@ def test_case_7_2_test_dropdown_default_values(app):
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
+    # app.orangeHrm.popUp.click_ess_role_field()
+    app.assert_that(app.orangeHrm.popUp.get_ess_role_dropdown()).is_equal_to(['All', 'Default ESS'])
+    # app.orangeHrm.popUp.click_admin_role_field()
+    app.assert_that(app.orangeHrm.popUp.get_admin_role_dropdown()).is_equal_to(['All', 'Global Admin', 'Leave Admin',
+                                                                                'Regional HR Admin', 'Report Admin'])
+    # app.orangeHrm.popUp.click_supervisor_role_field()
+    app.assert_that(app.orangeHrm.popUp.get_supervisor_role_dropdown()).is_equal_to(['All', 'Default Supervisor'])
+    # app.orangeHrm.popUp.click_status_field()
+    app.assert_that(app.orangeHrm.popUp.get_status_dropdown()).is_equal_to(['All', 'Enabled', 'Disabled'])
+    # app.orangeHrm.popUp.click_location_field()
+    app.assert_that(app.orangeHrm.popUp.get_location_dropdown()).is_equal_to(['-- Select --', 'All', 'Australia',
+                                                                              'Australia office', 'Canada',
+                                                                              'Canadian Development Center',
+                                                                              'France', 'France Office', 'Germany',
+                                                                              'German Office', 'India',
+                                                                              'India Office', 'Jamaica',
+                                                                              'Jamaica training center',
+                                                                              'Mexico', 'Mexico Office',
+                                                                              'Philippines',
+                                                                              'Philippine call center',
+                                                                              'Singapore',
+                                                                              'Singapore Regional HQ',
+                                                                              'South Africa',
+                                                                              'South Africa Satellite Office',
+                                                                              'United Kingdom', 'UK Office',
+                                                                              'United States', 'US Office'])
 
 
 # -----------------------------------------------------------------------------------
