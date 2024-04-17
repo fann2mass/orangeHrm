@@ -16,7 +16,7 @@ def test_case_7_test_employee_name_autocomplete(app):
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
-    app.orangeHrm.popUp.set_filter_employee_name_field("Jason")
+    app.orangeHrm.popUp.set_filter_employee_name("Jason")
     app.assert_that(app.orangeHrm.popUp.get_employee_name_auto_drop()).contains('Jason Marshal', 'Jason Morgan')
 
 
@@ -39,7 +39,7 @@ def test_case_7_1_test_employee_name_no_results(app):
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
-    app.orangeHrm.popUp.set_filter_employee_name_field("Sasha")
+    app.orangeHrm.popUp.set_filter_employee_name("Sasha")
     app.assert_that(app.orangeHrm.popUp.get_no_result_found_text()).is_equal_to('No results found')
 
 
@@ -64,16 +64,16 @@ def test_case_7_2_test_dropdown_default_values(app):
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
-    # app.orangeHrm.popUp.click_ess_role_field()
+    app.orangeHrm.popUp.click_ess_role_field()
     app.assert_that(app.orangeHrm.popUp.get_ess_role_dropdown()).is_equal_to(['All', 'Default ESS'])
-    # app.orangeHrm.popUp.click_admin_role_field()
+    app.orangeHrm.popUp.click_admin_role_field()
     app.assert_that(app.orangeHrm.popUp.get_admin_role_dropdown()).is_equal_to(['All', 'Global Admin', 'Leave Admin',
                                                                                 'Regional HR Admin', 'Report Admin'])
-    # app.orangeHrm.popUp.click_supervisor_role_field()
+    app.orangeHrm.popUp.click_supervisor_role_field()
     app.assert_that(app.orangeHrm.popUp.get_supervisor_role_dropdown()).is_equal_to(['All', 'Default Supervisor'])
-    # app.orangeHrm.popUp.click_status_field()
+    app.orangeHrm.popUp.click_status_field()
     app.assert_that(app.orangeHrm.popUp.get_status_dropdown()).is_equal_to(['All', 'Enabled', 'Disabled'])
-    # app.orangeHrm.popUp.click_location_field()
+    app.orangeHrm.popUp.click_location_field()
     app.assert_that(app.orangeHrm.popUp.get_location_dropdown()).is_equal_to(['-- Select --', 'All', 'Australia',
                                                                               'Australia office', 'Canada',
                                                                               'Canadian Development Center',
@@ -114,6 +114,21 @@ def test_case_7_3_test_reset_button(app):
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
+    app.orangeHrm.popUp.set_filter_username("Admin")
+    app.orangeHrm.popUp.set_filter_employee_name("aa")
+    app.orangeHrm.popUp.set_ess_role_dropdown("Default ESS")
+    app.orangeHrm.popUp.set_admin_role_dropdown("Leave Admin")
+    app.orangeHrm.popUp.set_supervisor_role_dropdown("Default Supervisor")
+    app.orangeHrm.popUp.set_status_dropdown("Disabled")
+    app.orangeHrm.popUp.set_location_dropdown("Australia")
+    app.orangeHrm.popUp.click_reset_filter()
+    app.orangeHrm.popUp.wait_filter_users_table_desapeared()
+    app.orangeHrm.hrAdministration.click_filter_button()
+    app.assert_that(app.orangeHrm.popUp.get_ess_role_dropdown()).is_equal_to("All")
+    app.assert_that(app.orangeHrm.popUp.get_admin_role_dropdown()).is_equal_to("All")
+    app.assert_that(app.orangeHrm.popUp.get_supervisor_role_dropdown()).is_equal_to("All")
+    app.assert_that(app.orangeHrm.popUp.get_status_dropdown()).is_empty()
+    app.assert_that(app.orangeHrm.popUp.get_location_dropdown()).is_equal_to("All")
 
 
 # -----------------------------------------------------------------------------------
@@ -137,3 +152,21 @@ def test_case_7_4_test_cancel_button(app):
     app.assert_that(app.orangeHrm.get_header_text()).is_equal_to('Employee Management')
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
+    app.orangeHrm.popUp.click_reset_filter()
+    app.orangeHrm.popUp.wait_filter_users_table_desapeared()
+    app.orangeHrm.hrAdministration.click_filter_button()
+    app.orangeHrm.popUp.set_filter_username("Admin")
+    app.orangeHrm.popUp.set_filter_employee_name("aa")
+    app.orangeHrm.popUp.set_ess_role_dropdown("Default ESS")
+    app.orangeHrm.popUp.set_admin_role_dropdown("Leave Admin")
+    app.orangeHrm.popUp.set_supervisor_role_dropdown("Default Supervisor")
+    app.orangeHrm.popUp.set_status_dropdown("Disabled")
+    app.orangeHrm.popUp.set_location_dropdown("Australia")
+    app.orangeHrm.popUp.click_filter_cancel_btn()
+    app.orangeHrm.popUp.wait_filter_users_table_desapeared()
+    app.orangeHrm.hrAdministration.click_filter_button()
+    app.assert_that(app.orangeHrm.popUp.get_ess_role_dropdown()).is_equal_to("Default ESS")
+    app.assert_that(app.orangeHrm.popUp.get_admin_role_dropdown()).is_equal_to("Leave Admin")
+    app.assert_that(app.orangeHrm.popUp.get_supervisor_role_dropdown()).is_equal_to("Default Supervisor")
+    app.assert_that(app.orangeHrm.popUp.get_status_dropdown()).is_equal_to("Disabled")
+    app.assert_that(app.orangeHrm.popUp.get_location_dropdown()).contains("Australia office")

@@ -5,6 +5,7 @@ from selenium.webdriver.common.by import By
 
 from fixture.step import StepHelper
 
+
 class DemonstrationAppDemoQa:
     parent_element_of_sub_menu = '//div[@class="element-list collapse show"]/../span'
     opened_sub_menu = 'div[class="element-list collapse show"]'

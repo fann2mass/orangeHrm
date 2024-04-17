@@ -17,7 +17,7 @@ def test_case_5_verify_that_a_users_status_can_be_enabled_or_disabled(app):
     app.orangeHrm.sideMenu.click_on_side_menu_button('HR Administration')
     app.orangeHrm.hrAdministration.click_filter_button()
     app.orangeHrm.popUp.click_on_username_filter_field()
-    app.orangeHrm.popUp.set_username_filter("local")
+    app.orangeHrm.popUp.set_filter_username("local")
     app.orangeHrm.popUp.click_on_search_button()
     app.assert_that(app.orangeHrm.hrAdministration.get_filter_no_record_message()).contains("No Records Found")
 
