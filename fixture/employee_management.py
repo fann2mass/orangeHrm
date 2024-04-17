@@ -6,6 +6,8 @@ class EmployeeManagement:
     home_button = "a[data-automation-id='menu_home']"
     list_of_widgets_header_texts = ".widget-header span:last-child"
     gear_button = '.config-button'
+    my_widget_button = '.nav-tabs li:nth-child(2)'
+    my_widgets_names = '.oxd-switch-label'
 
     def __init__(self, step: StepHelper, wd: WebDriver):
         self.step = step
