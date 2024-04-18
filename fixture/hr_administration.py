@@ -1,4 +1,3 @@
-import time
 
 from fixture.step import StepHelper
 from selenium.webdriver.remote.webdriver import WebDriver
@@ -52,7 +51,7 @@ class HrAdministration:
 
     def is_list_of_users_displayed(self):
         self.step.specified_element_is_not_present(self.filter_no_records_message, 5)
-        return self.step.specified_element_is_present(self.filtered_usernames)
+        return self.step.specified_element_is_present(self.filtered_user_names)
     def get_filter_no_record_message(self):
         self.step.specified_element_is_present(self.filter_no_records_message)
         return self.step.get_elements_texts(self.filter_no_records_message)
